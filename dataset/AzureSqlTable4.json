@@ -1,0 +1,34 @@
+{
+	"name": "AzureSqlTable4",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase4",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "one",
+				"type": "nvarchar"
+			},
+			{
+				"name": "two",
+				"type": "nvarchar"
+			},
+			{
+				"name": "three",
+				"type": "nvarchar"
+			},
+			{
+				"name": "four",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "tests"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

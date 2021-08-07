@@ -1,0 +1,16 @@
+{
+	"name": "MicrosoftAccessTable1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "MicrosoftAccess1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "MicrosoftAccessTable",
+		"schema": [],
+		"typeProperties": {
+			"tableName": "`'2020 Forecasted Sales$'_ImportErrors`"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

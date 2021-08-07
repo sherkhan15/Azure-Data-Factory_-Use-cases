@@ -1,0 +1,131 @@
+{
+	"name": "Excel2",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage2",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Excel",
+		"typeProperties": {
+			"sheetName": "US_Detail View_Sales Diagnostic",
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "Amazon%20US%20Daily%20Sales%20Diagnostic_2021-05-09.xlsx",
+				"container": "vulnerability-assessment"
+			},
+			"firstRowAsHeader": true
+		},
+		"schema": [
+			{
+				"name": "ASIN",
+				"type": "String"
+			},
+			{
+				"name": "Product Title",
+				"type": "String"
+			},
+			{
+				"name": "Shipped COGS",
+				"type": "String"
+			},
+			{
+				"name": "Shipped COGS - % of Total",
+				"type": "String"
+			},
+			{
+				"name": "Shipped COGS - Prior Period",
+				"type": "String"
+			},
+			{
+				"name": "Shipped COGS - Last Year",
+				"type": "String"
+			},
+			{
+				"name": "Shipped Units",
+				"type": "String"
+			},
+			{
+				"name": "Shipped Units - % of Total",
+				"type": "String"
+			},
+			{
+				"name": "Shipped Units - Prior Period",
+				"type": "String"
+			},
+			{
+				"name": "Shipped Units - Last Year",
+				"type": "String"
+			},
+			{
+				"name": "Ordered Units",
+				"type": "String"
+			},
+			{
+				"name": "Ordered Units - % of Total",
+				"type": "String"
+			},
+			{
+				"name": "Ordered Units - Prior Period",
+				"type": "String"
+			},
+			{
+				"name": "Ordered Units - Last Year",
+				"type": "String"
+			},
+			{
+				"name": "Customer Returns",
+				"type": "String"
+			},
+			{
+				"name": "Free Replacements",
+				"type": "String"
+			},
+			{
+				"name": "Subcategory (Sales Rank)",
+				"type": "String"
+			},
+			{
+				"name": "Average Sales Price",
+				"type": "String"
+			},
+			{
+				"name": "Average Sales Price - Prior Period",
+				"type": "String"
+			},
+			{
+				"name": "Glance Views",
+				"type": "String"
+			},
+			{
+				"name": "Change in Glance View - Prior Period",
+				"type": "String"
+			},
+			{
+				"name": "Change in GV Last Year",
+				"type": "String"
+			},
+			{
+				"name": "Conversion Rate",
+				"type": "String"
+			},
+			{
+				"name": "Rep OOS",
+				"type": "String"
+			},
+			{
+				"name": "Rep OOS - % of Total",
+				"type": "String"
+			},
+			{
+				"name": "Rep OOS - Prior Period",
+				"type": "String"
+			},
+			{
+				"name": "LBB (Price)",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

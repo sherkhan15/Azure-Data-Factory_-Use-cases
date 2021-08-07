@@ -1,0 +1,32 @@
+{
+	"name": "dataflow1",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "Excel2",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "DelimitedText2",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "DerivedColumn1"
+				}
+			],
+			"script": "source(output(\n\t\tASIN as string,\n\t\t{Product Title} as string,\n\t\t{Shipped COGS} as string,\n\t\t{Shipped COGS - % of Total} as string,\n\t\t{Shipped COGS - Prior Period} as string,\n\t\t{Shipped COGS - Last Year} as string,\n\t\t{Shipped Units} as string,\n\t\t{Shipped Units - % of Total} as string,\n\t\t{Shipped Units - Prior Period} as string,\n\t\t{Shipped Units - Last Year} as string,\n\t\t{Ordered Units} as string,\n\t\t{Ordered Units - % of Total} as string,\n\t\t{Ordered Units - Prior Period} as string,\n\t\t{Ordered Units - Last Year} as string,\n\t\t{Customer Returns} as string,\n\t\t{Free Replacements} as string,\n\t\t{Subcategory (Sales Rank)} as string,\n\t\t{Average Sales Price} as string,\n\t\t{Average Sales Price - Prior Period} as string,\n\t\t{Glance Views} as string,\n\t\t{Change in Glance View - Prior Period} as string,\n\t\t{Change in GV Last Year} as string,\n\t\t{Conversion Rate} as string,\n\t\t{Rep OOS} as string,\n\t\t{Rep OOS - % of Total} as string,\n\t\t{Rep OOS - Prior Period} as string,\n\t\t{LBB (Price)} as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> source1\nsource1 derive(Date = currentUTC()) ~> DerivedColumn1\nsource1 sink(allowSchemaDrift: true,\n\tvalidateSchema: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sink1"
+		}
+	}
+}

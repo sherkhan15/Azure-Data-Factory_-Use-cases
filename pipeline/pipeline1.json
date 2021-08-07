@@ -1,0 +1,153 @@
+{
+	"name": "pipeline1",
+	"properties": {
+		"activities": [
+			{
+				"name": "Lookup1_copy1",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "sheetname",
+						"value": "[\"Date Key\",\"Budget Spend\",\"Sponsored Products Campaign rep\",\"Sponsored Brands Campaign Repor\",\"Sponsored Display Campaign\",\"Sponsored Product Placement\",\"Sponsored Product Revenue\",\"Ordered Revenue Update\"]"
+					},
+					{
+						"name": "tablename",
+						"value": "[“Date”,”Budget”,”SponsoredPCR”,”SponsoredBCR”,”SponsoredDC”,”SponsoredPP”,”SponsoredPR”,”OrderedRU”]"
+					}
+				],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureFileStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"dataset": {
+						"referenceName": "DelimitedText1",
+						"type": "DatasetReference",
+						"parameters": {
+							"sheetname": [
+								"Date Key",
+								"Budget Spend",
+								"Sponsored Products Campaign rep",
+								"Sponsored Brands Campaign Repor",
+								"Sponsored Display Campaign",
+								"Sponsored Product Placement",
+								"Sponsored Product Revenue",
+								"Ordered Revenue Update"
+							],
+							"tablename": [
+								"Date",
+								"Budget",
+								"SponsoredPD",
+								"SponsoredBC",
+								"SponsoredDC",
+								"SponsoredPP",
+								"SponsoredPR",
+								"OrderedRU"
+							]
+						}
+					},
+					"firstRowOnly": false
+				}
+			},
+			{
+				"name": "ForEach1",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "Lookup1_copy1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Lookup1_copy1').output.value",
+						"type": "Expression"
+					},
+					"activities": [
+						{
+							"name": "Copy data1",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "ExcelSource",
+									"storeSettings": {
+										"type": "AzureFileStorageReadSettings",
+										"recursive": false,
+										"enablePartitionDiscovery": false
+									}
+								},
+								"sink": {
+									"type": "AzureSqlSink",
+									"tableOption": "autoCreate"
+								},
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"typeConversion": true,
+									"typeConversionSettings": {
+										"allowDataTruncation": true,
+										"treatBooleanAsNumber": false
+									}
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "Excel1",
+									"type": "DatasetReference",
+									"parameters": {
+										"sheetname": {
+											"value": "@item().sheetname",
+											"type": "Expression"
+										}
+									}
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "AzureSqlTable2",
+									"type": "DatasetReference",
+									"parameters": {
+										"tablename": {
+											"value": "@item().tablename",
+											"type": "Expression"
+										}
+									}
+								}
+							]
+						}
+					]
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2021-04-19T05:48:27Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

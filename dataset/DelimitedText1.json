@@ -1,0 +1,60 @@
+{
+	"name": "DelimitedText1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureFileStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"sheetname": {
+				"type": "array",
+				"defaultValue": [
+					"Date Key",
+					"Budget Spend",
+					"Sponsored Products Campaign rep",
+					"Sponsored Brands Campaign Repor",
+					"Sponsored Display Campaign",
+					"Sponsored Product Placement",
+					"Sponsored Product Revenue",
+					"Ordered Revenue Update"
+				]
+			},
+			"tablename": {
+				"type": "array",
+				"defaultValue": [
+					"Date",
+					"Budget",
+					"SponsoredPD",
+					"SponsoredBC",
+					"SponsoredDC",
+					"SponsoredPP",
+					"SponsoredPR",
+					"OrderedRU"
+				]
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureFileStorageLocation",
+				"fileName": "Company_Current_adverstising_data.txt"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "sheetname",
+				"type": "String"
+			},
+			{
+				"name": "tablename",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,53 @@
+{
+	"name": "CosmosDbSqlApiCollection2",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "CosmosDb1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "CosmosDbSqlApiCollection",
+		"schema": {
+			"type": "object",
+			"properties": {
+				"CartID": {
+					"type": "integer"
+				},
+				"Action": {
+					"type": "string"
+				},
+				"Item": {
+					"type": "string"
+				},
+				"Price": {
+					"type": "number"
+				},
+				"UserName": {
+					"type": "string"
+				},
+				"Country": {
+					"type": "string"
+				},
+				"EventDate": {
+					"type": "string"
+				},
+				"Year": {
+					"type": "integer"
+				},
+				"Latitude": {
+					"type": "number"
+				},
+				"Longitude": {
+					"type": "number"
+				},
+				"Address": {
+					"type": "string"
+				}
+			}
+		},
+		"typeProperties": {
+			"collectionName": "WebsiteData"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
