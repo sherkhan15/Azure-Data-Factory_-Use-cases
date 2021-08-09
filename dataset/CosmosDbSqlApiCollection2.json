@@ -10,43 +10,19 @@
 		"schema": {
 			"type": "object",
 			"properties": {
-				"CartID": {
-					"type": "integer"
-				},
-				"Action": {
+				"fruit": {
 					"type": "string"
 				},
-				"Item": {
+				"size": {
 					"type": "string"
 				},
-				"Price": {
-					"type": "number"
-				},
-				"UserName": {
-					"type": "string"
-				},
-				"Country": {
-					"type": "string"
-				},
-				"EventDate": {
-					"type": "string"
-				},
-				"Year": {
-					"type": "integer"
-				},
-				"Latitude": {
-					"type": "number"
-				},
-				"Longitude": {
-					"type": "number"
-				},
-				"Address": {
+				"color": {
 					"type": "string"
 				}
 			}
 		},
 		"typeProperties": {
-			"collectionName": "WebsiteData"
+			"collectionName": "Items"
 		}
 	},
 	"type": "Microsoft.DataFactory/factories/datasets"

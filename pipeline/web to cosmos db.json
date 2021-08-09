@@ -1,5 +1,5 @@
 {
-	"name": "REST connector to ADLS Gen2",
+	"name": "web to cosmos db",
 	"properties": {
 		"activities": [
 			{
@@ -31,23 +31,30 @@
 						"mappings": [
 							{
 								"source": {
-									"path": "$['userId']"
+									"path": "$['firstName']"
 								},
 								"sink": {
-									"name": "userid",
-									"type": "Int32"
+									"path": "$['fruit']"
 								}
 							},
 							{
 								"source": {
-									"path": "$['id']"
+									"path": "$['lastName']"
 								},
 								"sink": {
-									"name": "id",
-									"type": "Int32"
+									"path": "$['size']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['gender']"
+								},
+								"sink": {
+									"path": "$['color']"
 								}
 							}
-						]
+						],
+						"collectionReference": ""
 					}
 				},
 				"inputs": [
@@ -64,14 +71,6 @@
 				]
 			}
 		],
-		"parameters": {
-			"SinkContainer": {
-				"type": "string"
-			},
-			"SinkDirectory": {
-				"type": "string"
-			}
-		},
 		"annotations": [],
 		"lastPublishTime": "2021-08-05T14:43:53Z"
 	},
